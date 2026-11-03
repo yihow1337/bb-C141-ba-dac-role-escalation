@@ -1,0 +1,8 @@
+{
+  "name": "r50-c141-ba-dac-role-escalation",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "better-auth": "1.7.15"
+  }
+}

